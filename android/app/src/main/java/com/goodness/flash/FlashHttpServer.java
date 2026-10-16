@@ -182,7 +182,7 @@ public class FlashHttpServer extends NanoHTTPD {
 
         } catch (Exception e) {
             Log.e(TAG, "Serve error", e);
-            return jsonResponse(Response.Status.INTERNAL_SERVER_ERROR, "{\"error\":\"" + e.getMessage() + "\"}");
+            return jsonResponse(Response.Status.INTERNAL_ERROR, "{\"error\":\"" + e.getMessage() + "\"}");
         }
     }
 
