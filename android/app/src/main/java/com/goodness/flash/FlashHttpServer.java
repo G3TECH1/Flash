@@ -48,7 +48,11 @@ public class FlashHttpServer extends NanoHTTPD {
     }
 
     private Response jsonResponse(Response.Status status, String body) {
-        return newFixedLengthResponse(status, "application/json; charset=utf-8", body);
+        Response response = newFixedLengthResponse(status, "application/json; charset=utf-8", body);
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+        response.addHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+        return response;
     }
 
     private String readRequestBody(IHTTPSession session) throws IOException {
